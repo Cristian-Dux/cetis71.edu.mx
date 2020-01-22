@@ -17,4 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/noticias','NoticiasController@index');
+
+Route::get('/imagenes','ImagenesController@index');
+
+Route::get('/mensaje','MensajeController@index');
