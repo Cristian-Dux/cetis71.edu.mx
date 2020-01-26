@@ -21,4 +21,4 @@ Route::get('/noticias','NoticiasController@index');
 
 Route::get('/imagenes','ImagenesController@index');
 
-Route::get('/mensaje','MensajeController@index');
+Route::get('/mensajes','MensajesController@index');

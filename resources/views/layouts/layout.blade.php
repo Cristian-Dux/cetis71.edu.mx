@@ -35,7 +35,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a href="/imagenes" class="nav-link">Contact Imagenes</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/mensaje" class="nav-link">Mensaje</a>
+        <a href="/mensajes" class="nav-link">Mensajes</a>
       </li>
     </ul>
 
