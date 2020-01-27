@@ -11,14 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
-Route::get('/noticias','NoticiasController@index');
+Route::get('/','NoticiasController@index');
 
-Route::get('/imagenes','ImagenesController@index');
-
-Route::get('/mensajes','MensajesController@index');
+Route::resource('/noticias', 'NoticiasController');

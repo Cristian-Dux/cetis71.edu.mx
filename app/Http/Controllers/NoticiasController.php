@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\noticia;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class NoticiasController extends Controller
 {
@@ -13,7 +15,8 @@ class NoticiasController extends Controller
      */
     public function index()
     {
-        //
+        $noticias=noticia::all();
+        return view("noticias.index",compact('noticias'));
     }
 
     /**
@@ -23,7 +26,7 @@ class NoticiasController extends Controller
      */
     public function create()
     {
-        //
+        return view("noticias.create");
     }
 
     /**
@@ -34,7 +37,16 @@ class NoticiasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $noticia = new noticia($request->all());
+        if($request->hasFile('urlfoto')){
+            $urlfoto = $request->file('urlfoto');
+            $nombreurlfoto = str_slug($request->titulo).'.'.$urlfoto->guessExtension();
+            $ruta=public_path('/dist/img/noticias/'.$nombreurlfoto);
+            Image::make($urlfoto->getRealPath())
+                    ->resize(500,null, function($constraint){ $constraint->ascpectRatio();})
+                    ->save($ruta,72);
+            $noticia->urlfoto = $nombreurlfoto;
+        }
     }
 
     /**
