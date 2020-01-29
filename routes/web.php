@@ -17,6 +17,6 @@
 
 Auth::routes();
 
-Route::get('/','NoticiasController@index');
+Route::resource('/','NoticiasController');
 
 Route::resource('/noticias', 'NoticiasController');

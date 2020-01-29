@@ -4,6 +4,10 @@
 
 <div class="row">
   <div class="col-12">
+    @foreach (['danger', 'warning', 'success', 'info'] as $msg) @if(Session::has('alert-' . $msg)) 
+    {{ Session::get('alert-' . $msg) }} 
+    
+     @endif @endforeach 
     <a href="{{ route('noticias.create') }}" class="btn btn-primary">Nuevo</a>
     @if(empty($noticias))
       <table class="table">
