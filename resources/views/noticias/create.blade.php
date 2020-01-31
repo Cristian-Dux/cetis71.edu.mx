@@ -15,7 +15,7 @@
                 
                 <div class="form-group">
                     <label for="urlfoto" >Imagenes de Noticia</label>
-                    <input type="file" class="form-control-file" name="urlfoto[]" id="urlfoto[]" multiple accept="image/*">
+                    <input type="file" class="form-control-file" name="urlfoto" id="urlfoto" accept="image/*">
                 </div>
                 {!! Form::submit('Registrar', ['class' => 'btn btn-primary']) !!}
                 {!! Form::close() !!}
