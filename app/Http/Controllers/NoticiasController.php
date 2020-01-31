@@ -37,13 +37,23 @@ class NoticiasController extends Controller
      */
     public function store(Request $request)
     {
-        $entrada=$request->all();
+        try {
+            $entrada=$request->all();
         if ($archivo=$request->file('urlfoto')) {
             $nombre=$archivo->getClientOriginalName();
             $archivo->move('/dist/img/noticias',$nombre);
             $entrada['urlfoto']= $nombre;
             noticia::create($entrada);
+            $request->session()->flash('alert-success', 'Notice is added!');
+            return redirect()->route("noticias.index");
         }
+
+        } catch (\Throwable $th) {
+            //throw $th;
+            $request->session()->flash('alert-danger', 'Notice not added!'.' '.$th );
+            return redirect()->route("noticias.index");
+        }
+        
     }
 
     /**
